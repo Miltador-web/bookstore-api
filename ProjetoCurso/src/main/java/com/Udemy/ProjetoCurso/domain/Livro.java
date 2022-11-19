@@ -1,13 +1,18 @@
 package com.Udemy.ProjetoCurso.domain;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
-
-public class Livro {
+@Entity
+public class Livro implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
     private String nome_autor;
     private String texto;
-
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     public Livro() {
